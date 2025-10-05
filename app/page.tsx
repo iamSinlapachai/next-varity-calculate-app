@@ -4,8 +4,11 @@ import Footer from "@/component/footer";
 import Image from "next/image";
 import calculator from "./../assets/images/calculator.png";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function HomePage() {
+//เรียกใช้ useRouter เพื่อใช้ในการเปลี่ยนเส้นทาง ไปยังหน้าต่างๆ redirect
+  const router = useRouter();
 
   //สร้าง State สำหรับเก็บค่ารหัสเข้าใช้งาน
   const [ucode, setUcode] = useState("");
@@ -16,12 +19,13 @@ export default function HomePage() {
       alert("กรุณาป้อนรหัสเข้าใช้งาน");
       return;
     }
-    if (ucode !== "sau") {
+    if (ucode.toLowerCase() !== "sau") {
       alert("รหัสเข้าใช้งานไม่ถูกต้อง");
       return;
     }
     if (ucode.toLowerCase() == "sau") {
-      window.location.href = "/menu"; //เปลี่ยนเส้นทางไปยังหน้า /menu
+      //window.location.href = "/menu"; //เปลี่ยนเส้นทางไปยังหน้า /menu
+      router.push("/menu"); //เปลี่ยนเส้นทางไปยังหน้า /menu
     }
   }
 
@@ -31,8 +35,8 @@ export default function HomePage() {
         className="w-6/12 border-gray-500 mx-auto mt-20 p-20
       flex flex-col items-center rounded-2xl shadow-xl"
       >
-        <Image src={calculator} alt="calculator" width={200} />
-        <h1 className="text-3xl text-blue-600 font-bold mt-5">
+        <Image src={calculator} alt="calculator" width={100} />
+        <h1 className="text-2xl text-blue-600 font-bold mt-5">
           Varity Calculator V.1.0
         </h1>
         <h1 className="texxt-3xl text-blue-600 mt-2 mb-5">โปรแกรมคำนวณ</h1>
