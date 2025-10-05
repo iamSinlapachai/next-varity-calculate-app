@@ -24,7 +24,7 @@ export default function Page() {
       return;
     }
 
-    let result = parseFloat(moneyInput) / parseInt(person);
+    const result = parseFloat(moneyInput) / parseInt(person);
     setMoneyShare(result.toFixed(2));
   };
   const handleCancelClick = () => {
